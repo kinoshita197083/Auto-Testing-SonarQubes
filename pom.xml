@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fit5171.monash.edu</groupId>
-    <artifactId>Assignment2-code-base</artifactId>
+    <artifactId>FIT5171</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
