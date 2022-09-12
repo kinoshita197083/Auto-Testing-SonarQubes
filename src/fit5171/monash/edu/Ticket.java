@@ -4,9 +4,10 @@ public class Ticket
     private int ticket_id;
     private int price;
     Flight flight;
-    private boolean classVip; //indicates if this is bussiness class ticket or not
+    private boolean classVip; //indicates if this is business class ticket or not
     private boolean status; //indicates status of ticket: if it is bought by someone or not
     Passenger passenger;
+    private double serviceTax;
 
     public Ticket(int ticket_id,int price, Flight flight, boolean classVip, Passenger passenger)
     {
@@ -16,6 +17,7 @@ public class Ticket
         this.classVip = classVip;
         this.status = false;
         this.passenger=passenger;
+        this.serviceTax = 0.12;
     }
 
     public Ticket() {
@@ -82,6 +84,11 @@ public class Ticket
         this.price *= 1.12;
     } //12% service tax
 
+    //Added Method
+    public void setServiceTax(double serviceTax) { this.serviceTax = serviceTax; }
+
+    public double getServiceTax() {return this.serviceTax; }
+
     public Passenger getPassenger() {
         return passenger;
     }
@@ -95,6 +102,7 @@ public class Ticket
         return"Ticket{" +'\n'+
                 "Price=" + getPrice() + "KZT, " + '\n' +
                 getFlight() +'\n'+ "Vip status=" + getClassVip() + '\n' +
-                getPassenger()+'\n'+ "Ticket was purchased=" + ticketStatus() + "\n}";
+                getPassenger()+'\n'+ "Ticket was purchased=" + ticketStatus() + "\n}" +
+                "Service Tax=" + getServiceTax();
     }
 }
