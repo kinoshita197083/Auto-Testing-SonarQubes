@@ -14,12 +14,12 @@ public class FlightCollection {
 		FlightCollection.flights.addAll(flights);
 	}
 	
-	public static Flight getFlightInfo(String city1, String city2) {
+	public static Flight getFlightInfo(String city1, String city2) throws Exception {
     	//display the flights where there is a direct flight from city 1 to city2
     	return null;
     }
     
-    public static Flight getFlightInfo(String city) {
+    public static Flight getFlightInfo(String city) throws NullPointerException {
     	//SELECT a flight where depart_to = city
     	return null;
 
