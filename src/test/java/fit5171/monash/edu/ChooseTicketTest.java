@@ -31,21 +31,21 @@ public class ChooseTicketTest {
         this.chooseTicket = new ChooseTicket(){};
     }
 
-    @DisplayName("Input cities are valid value")
-    @Test
-    void testCityWithValidValue() {
+//    @DisplayName("Input cities are valid value")
+//    @Test
+//    void testCityWithValidValue() {
+//
+//        Throwable exception = assertThrows(Exception.class, () -> {
+//            chooseTicket.chooseTicket("Tokyo", "Sydney");
+//        });
+//        assertEquals(Exception.class, exception.getMessage());
+//    }
 
-        Throwable exception = assertThrows(Exception.class, () -> {
-            chooseTicket.chooseTicket("Tokyo", "Sydney");
-        });
-        assertEquals(Exception.class, exception.getMessage());
-    }
-
-    @DisplayName("Input city are invalid value")
+    @DisplayName("Input city are invalid values")
     @ParameterizedTest
     @NullSource
     @Test
-    void testCityWithInValidValue(String city1, String city2) {
+    void testCityWithInValidValues(String city1, String city2) {
 
         Throwable exception = assertThrows(Exception.class, () -> {
             chooseTicket.chooseTicket(city1, city2);

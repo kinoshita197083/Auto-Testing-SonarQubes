@@ -50,6 +50,7 @@ public class BuyTicket <T>
                 System.out.println("This ticket does not exist.");
                 return;
             } else {
+
                 //select flight_id from ticket where ticket_id=" + ticket_id
 
                 try {

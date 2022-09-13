@@ -31,9 +31,9 @@ class TicketTest {
 
     @BeforeEach
     void init(){
-        this.ticket = new Ticket(){};
         this.flight = mock(Flight.class);
         this.passenger = mock(Passenger.class);
+        this.ticket = new Ticket(123, 700, flight, false, passenger);
     }
 
     @DisplayName("Test ticket status in boolean")
@@ -53,32 +53,28 @@ class TicketTest {
 //    }
     @DisplayName("Test ticket price when adult price as input")
     @Test
-    void testDiscountBasedOnAgeCategory() {
-        //Dummy Data
-        int age = 25;
-        int price = 200;
+    void testDiscountBasedOnAgeCategoryAdult() {
+        //Mock passenger age, which is required in saleByAge within setPrice()
+        when(passenger.getAge()).thenReturn(30);
 
-        //Expected Results
-        int expectedPrice = 200;
+        //Expected Results; Caution: the price has included service tax
+        int expectedPrice = 784;
 
-        //Input the price
-        ticket.setPrice(price);
+        ticket.setPrice(700);
 
         assertEquals(expectedPrice, ticket.getPrice());
     }
 
-    @DisplayName("Test ticket price when child age as input")
+    @DisplayName("Test ticket price when child price as input")
     @Test
-    void testChildDiscount() {
-        //Dummy Data
-        int age = 14;
-        int price = 200;
+    void testDiscountBasedOnAgeCategoryChild() {
+        //Mock passenger age, which is required in saleByAge within setPrice()
+        when(passenger.getAge()).thenReturn(6);
 
-        //Expected Results
-        int expectedPrice = 100;
+        //Expected Results; Caution: the price has included service tax
+        int expectedPrice = 392;
 
-        //Input the price
-        ticket.setPrice(price);
+        ticket.setPrice(700);
 
         assertEquals(expectedPrice, ticket.getPrice());
     }
@@ -86,15 +82,13 @@ class TicketTest {
     @DisplayName("Test ticket price when elder age as input")
     @Test
     void testElderlyDiscount() {
-        //Dummy Data
-        int age = 60;
-        int price = 200;
+        //Mock passenger age, which is required in saleByAge within setPrice()
+        when(passenger.getAge()).thenReturn(70);
 
-        //Expected Results
+        //Expected Results; Caution: the price has included service tax
         int expectedPrice = 0;
 
-        //Input the price
-        ticket.setPrice(price);
+        ticket.setPrice(700);
 
         assertEquals(expectedPrice, ticket.getPrice());
     }
@@ -120,7 +114,8 @@ class TicketTest {
     void testServiceTaxIsAValidValue() {
         double serviceTax = ticket.getServiceTax();
 
-        assertTrue(serviceTax == (int)serviceTax | serviceTax == (float)serviceTax | serviceTax == (double)serviceTax);
+        assertTrue(serviceTax != (int)serviceTax | serviceTax == (float)serviceTax |
+                serviceTax == (double)serviceTax | serviceTax != 0);
     }
 
     @DisplayName("Test if the service tax has always been applied on ticket")
@@ -131,22 +126,4 @@ class TicketTest {
         assertNotNull(serviceTax);
     }
 
-    @DisplayName("Include Flight and Passenger as a part of integration test")
-    @Test
-    void integrationTestWithFLightAndPassenger() {
-        this.ticket = new Ticket(99, 200,this.flight, true, this.passenger );
-
-        assertNotNull(ticket);
-    }
-
-    @DisplayName("Integration Test: get flight details")
-    @Test
-    void integrationTestGetFlight() {
-        this.ticket = new Ticket(99, 200,this.flight, true, this.passenger );
-
-        when(flight.getFlightID()).thenReturn(1);
-        Flight flightDetails = this.ticket.getFlight();
-//        System.out.println(flight.getFlightID());
-        assertNotNull(flightDetails);
-    }
 }
