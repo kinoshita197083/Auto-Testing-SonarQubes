@@ -1,4 +1,4 @@
-package fit5171.monash.edu;
+package test.java.fit5171.monash.edu;
 
 import static org.junit.jupiter.api.Assertions.*;
 
