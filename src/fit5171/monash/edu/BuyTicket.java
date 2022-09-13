@@ -1,5 +1,9 @@
 package fit5171.monash.edu;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import java.sql.*;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -33,6 +37,9 @@ public class BuyTicket <T>
         }
     }
 
+    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {1})
     public void buyTicket(int ticket_id) throws Exception
         //method for buying one ticket with direct flight
     {
@@ -42,16 +49,19 @@ public class BuyTicket <T>
         Ticket validTicket = TicketCollection.getTicketInfo(ticket_id);
        
         //if there is a valid ticket id was input then we buy it, otherwise show message
-        if(validTicket != null)
+        if(validTicket == null)
         {
             System.out.println("This ticket does not exist.");
             return;
         }
         else{
         	//select flight_id from ticket where ticket_id=" + ticket_id
-        
-            flight_id = validTicket.getFlight().getFlightID();
-            
+
+            try {
+                flight_id = validTicket.getFlight().getFlightID();
+            } catch(Exception e) {
+                throw e;
+            }
             try
             {
                 System.out.println("Enter your First Name: ");

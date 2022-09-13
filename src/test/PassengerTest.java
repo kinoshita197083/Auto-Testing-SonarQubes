@@ -12,6 +12,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.testng.util.Strings;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @DisplayName("Passenger test class")
 public class PassengerTest {
@@ -146,5 +148,33 @@ public class PassengerTest {
         String phoneNumber = "1234567890";
         boolean successful = passenger.validatePhoneNumber(phoneNumber);
         Assertions.assertFalse(successful, "Invalid input");
+    }
+
+    @Test
+    @DisplayName("Test if the first name is matched to user inputs")
+    void testIfFirstNameFieldsMatchUserInputs(){
+        Passenger mockedPassenger = new Passenger("Lee", "secondName", 20, "Male", "test@email.com", "", "", "", 0);
+        assertTrue(mockedPassenger.getFirstName().equals("Lee") );
+    }
+
+    @Test
+    @DisplayName("Test if the second name is matched to user inputs")
+    void testIfSecondNameFieldsMatchUserInputs(){
+        Passenger mockedPassenger = new Passenger("Lee", "Apple", 20, "Male", "test@email.com", "", "", "", 0);
+        assertTrue(mockedPassenger.getSecondName().equals("Apple") );
+    }
+
+    @Test
+    @DisplayName("Test if the age is matched to user inputs")
+    void testIfAgeFieldsMatchUserInputs(){
+        Passenger mockedPassenger = new Passenger("Lee", "secondName", 20, "Male", "test@email.com", "", "", "", 0);
+        assertTrue(mockedPassenger.getAge() == 20);
+    }
+
+    @Test
+    @DisplayName("Test if the gender is matched to user inputs")
+    void testIfGenderFieldsMatchUserInputs(){
+        Passenger mockedPassenger = new Passenger("Lee", "secondName", 20, "Male", "test@email.com", "", "", "", 0);
+        assertTrue(mockedPassenger.getGender().equals("Male") );
     }
 }
