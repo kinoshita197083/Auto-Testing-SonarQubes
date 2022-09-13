@@ -31,7 +31,6 @@ public class PersonTest {
     void testFirstNameValid(){
         String firstName = "Tim";
         person.setFirstName(firstName);
-        person = new Person();
         Assertions.assertEquals(firstName, person.getFirstName());
     }
 
@@ -39,28 +38,16 @@ public class PersonTest {
     @EmptySource
     @DisplayName("A test method to test firstName attribute empty")
     void testFirstNameInvalid(String firstName) {
-//        String firstName = "";
         person.setFirstName(firstName);
         assertTrue(Strings.isNullOrEmpty(firstName));
-//        assertFalse(person.getFirstName().isEmpty());
-//        Assertions.assertNotNull(person.getFirstName());
-//        Assertions.assertThrows(IllegalArgumentException.class,()->{person.setFirstName(null);});
-//        Throwable exception = assertThrows(
-//                NullPointerException.class, () -> {
-//                    person.setFirstName(null);
-//                }
-//        );
-//
-//        assertEquals("Username cannot be blank", exception.getMessage());
     }
 
     @Test
     @DisplayName("A test method to test secondName attribute cannot be empty")
     void testSecondNameValid(){
-//        String secondName = "Tam";
-//        person.setSecondName(secondName);
-//        String newSecondName = person.getSecondName();
-//        Assertions.assertEquals(secondName, newSecondName);
+        String secondName = "Tam";
+        person.setSecondName(secondName);
+        Assertions.assertEquals(secondName, person.getSecondName());
     }
 
     @ParameterizedTest
@@ -76,7 +63,6 @@ public class PersonTest {
     void testAgeValid(){
         int age = 18;
         person.setAge(age);
-//        int newAge = person.getAge();
         Assertions.assertEquals(age, person.getAge());
     }
 
@@ -131,7 +117,7 @@ public class PersonTest {
     @DisplayName("A test method to test if firstName not start with numbers or symbols")
     void testFirstNameLettersInvalid(){
         String firstName = "00Tim";
-        boolean successful = person.validGender(firstName);
+        boolean successful = person.validateName(firstName);
         Assertions.assertFalse(successful, "Invalid input");
     }
 
@@ -139,10 +125,7 @@ public class PersonTest {
     @DisplayName("A test method to test if secondName not start with numbers or symbols")
     void testLastNameLettersInvalid(){
         String secondName = "00Tim";
-//        Assertions.assertThrows(PatternSyntaxException.class, ()->{
-//            person.setSecondName(secondName);
-//        });
-        boolean successful = person.validGender(secondName);
+        boolean successful = person.validateName(secondName);
         Assertions.assertFalse(successful, "Invalid input");
     }
 }

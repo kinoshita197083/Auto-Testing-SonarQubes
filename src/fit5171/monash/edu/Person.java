@@ -1,6 +1,5 @@
 package fit5171.monash.edu;
 
-import java.util.regex.PatternSyntaxException;
 
 public class Person //abstract class Person
 {
@@ -12,21 +11,13 @@ public class Person //abstract class Person
     public Person(){}
 
     public Person(String firstName, String secondName, int age, String gender){
-//        try {
         this.age=age;
         if (validateName(firstName))
             this.firstName=firstName;
-        else
-            throw new PatternSyntaxException("Name cannot start with numbers or symbols", "", -1);
         if (validateName(secondName))
             this.secondName=secondName;
-//        else
-//            throw new PatternSyntaxException("Name cannot start with numbers or symbols", "", -1);
         if (validGender(gender))
             this.gender=gender;
-//        } catch (NullPointerException e) {
-//            System.out.println("Field cannot be empty");
-//        }
     }
 
     public int getAge() {
@@ -66,7 +57,7 @@ public class Person //abstract class Person
 
     public void setFirstName(String firstName){
         try{
-//            if (validateName(firstName))
+            if (validateName(firstName))
                 this.firstName = firstName;
         }
         catch (Throwable e) {
@@ -96,7 +87,11 @@ public class Person //abstract class Person
     }
 
     public boolean validateName (String name) {
-        return name.matches("^(?!.*[-_]{2})(?=.*[a-z0-9]$)[a-z0-9][a-z0-9_-]*$");
+        if (Character.isLetter(name.charAt(0)))
+            return true;
+        else
+            return false;
+//        return name.matches("^(?!.*[-_]{2})(?=.*[a-z0-9]$)[a-z0-9][a-z0-9_-]*$");
     }
 
     public boolean validGender (String gender) throws NullPointerException {
