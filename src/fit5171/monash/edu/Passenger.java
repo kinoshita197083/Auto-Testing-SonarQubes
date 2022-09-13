@@ -19,7 +19,7 @@ public class Passenger extends Person
         this.cardNumber=cardNumber;
         if (validatePassport(passport))
             this.passport=passport;
-        if (validateEmail(email))
+        if (!validateEmail(email))
             this.email=email;
         if (validatePhoneNumber(phoneNumber))
             this.phoneNumber=phoneNumber;
