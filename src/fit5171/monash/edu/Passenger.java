@@ -15,7 +15,8 @@ public class Passenger extends Person
         super();
         this.securityCode=securityCode;
         this.cardNumber=cardNumber;
-        this.passport=passport;
+        if (validatePassport(passport))
+            this.passport=passport;
         this.email=email;
         this.phoneNumber=phoneNumber;
     }
@@ -78,7 +79,13 @@ public class Passenger extends Person
     }
 
     public void setPassport(String passport) {
-        this.passport = passport;
+        try{
+            if (validatePassport(passport))
+                this.passport = passport;
+        }
+        catch (Throwable e) {
+            System.out.println("Field cannot be empty");
+        }
     }
 
     @Override
@@ -103,5 +110,12 @@ public class Passenger extends Person
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", passport='" + passport +
                 '}';
+    }
+
+    public boolean validatePassport(String passport){
+        if (passport.length()<10)
+            return true;
+        else
+            return false;
     }
 }

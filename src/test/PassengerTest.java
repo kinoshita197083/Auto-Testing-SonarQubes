@@ -7,9 +7,11 @@ import fit5171.monash.edu.Person;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.testng.util.Strings;
 
 @DisplayName("Passenger test class")
 public class PassengerTest {
@@ -31,7 +33,7 @@ public class PassengerTest {
     @DisplayName("A test method to test if person class attritube valid")
     void testFirstName(){
         String firstName = "Tim";
-//        when(person.setFirstName(firstName)).thenReturn(person);
+//        when(person.setFirstName(firstName)).thenReturn(new Person());
     }
 
     @Test
@@ -42,9 +44,12 @@ public class PassengerTest {
         Assertions.assertEquals(email, passenger.getEmail());
     }
 
-    @Test
+    @ParameterizedTest
+    @EmptySource
     @DisplayName("A test method to test if email cannot be empty")
-    void testEmailInvalid(){
+    void testEmailInvalid(String email){
+        passenger.setEmail(email);
+        assertTrue(Strings.isNullOrEmpty(email));
     }
 
     @Test
@@ -55,9 +60,12 @@ public class PassengerTest {
         Assertions.assertEquals(phone, passenger.getPhoneNumber());
     }
 
-    @Test
+    @ParameterizedTest
+    @EmptySource
     @DisplayName("A test method to test if phone number cannot be empty")
-    void testPhoneInvalid(){
+    void testPhoneInvalid(String phone){
+        passenger.setPhoneNumber(phone);
+        assertTrue(Strings.isNullOrEmpty(phone));
     }
 
     @Test
@@ -68,9 +76,12 @@ public class PassengerTest {
         Assertions.assertEquals(card, passenger.getCardNumber());
     }
 
-    @Test
+    @ParameterizedTest
+    @EmptySource
     @DisplayName("A test method to test if card number cannot be empty")
-    void testCardNumberInvalid(){
+    void testCardNumberInvalid(String cardNumber){
+        passenger.setCardNumber(cardNumber);
+        assertTrue(Strings.isNullOrEmpty(cardNumber));
     }
 
     @Test
@@ -84,6 +95,8 @@ public class PassengerTest {
     @Test
     @DisplayName("A test method to test if security code cannot be empty")
     void testSecurityCodeInvalid(){
+        int securityCode = passenger.getSecurityCode();
+        Assertions.assertNotNull(securityCode);
     }
 
     @Test
@@ -94,8 +107,11 @@ public class PassengerTest {
         Assertions.assertEquals(passport, passenger.getPassport());
     }
 
-    @Test
+    @ParameterizedTest
+    @EmptySource
     @DisplayName("A test method to test if passport cannot be empty")
-    void testPassportInvalid(){
+    void testPassportInvalid(String passport){
+        passenger.setPassport(passport);
+        assertTrue(Strings.isNullOrEmpty(passport));
     }
 }

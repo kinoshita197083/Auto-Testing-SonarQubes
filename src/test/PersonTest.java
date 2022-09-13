@@ -101,7 +101,7 @@ public class PersonTest {
     @DisplayName("A test method to test if gender field valid")
     void testGenderInputInvalid(){
         String gender = "Prefer not to say";
-        boolean successful = person.validGender(gender);
+        boolean successful = person.validateGender(gender);
         Assertions.assertFalse(successful, "Invalid input");
     }
 

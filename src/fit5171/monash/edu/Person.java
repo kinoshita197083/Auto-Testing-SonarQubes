@@ -16,7 +16,7 @@ public class Person //abstract class Person
             this.firstName=firstName;
         if (validateName(secondName))
             this.secondName=secondName;
-        if (validGender(gender))
+        if (validateGender(gender))
             this.gender=gender;
     }
 
@@ -39,7 +39,7 @@ public class Person //abstract class Person
 
     public void setGender(String gender) {
         try{
-            if (validGender(gender))
+            if (validateGender(gender))
                 this.gender = gender;
         }
         catch (Throwable e) {
@@ -94,7 +94,7 @@ public class Person //abstract class Person
 //        return name.matches("^(?!.*[-_]{2})(?=.*[a-z0-9]$)[a-z0-9][a-z0-9_-]*$");
     }
 
-    public boolean validGender (String gender) throws NullPointerException {
+    public boolean validateGender (String gender) throws NullPointerException {
         if (gender.equals("Female") || gender.equals("Male") || gender.equals("Other"))
             return true;
         else
