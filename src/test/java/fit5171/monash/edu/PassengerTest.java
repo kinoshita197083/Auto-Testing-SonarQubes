@@ -1,8 +1,7 @@
 package test.java.fit5171.monash.edu;
-import fit5171.monash.edu.Person;
+import main.java.fit5171.monash.edu.Person;
 import org.junit.jupiter.api.*;
-import fit5171.monash.edu.Passenger;
-import fit5171.monash.edu.Person;
+import main.java.fit5171.monash.edu.Passenger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

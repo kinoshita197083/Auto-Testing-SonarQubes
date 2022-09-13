@@ -1,4 +1,4 @@
-package test;
+package test.java.fit5171.monash.edu;
 
 import java.util.stream.Stream;
 

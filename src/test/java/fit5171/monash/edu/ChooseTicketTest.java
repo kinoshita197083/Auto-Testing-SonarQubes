@@ -1,7 +1,8 @@
-package test;
+package test.java.fit5171.monash.edu;
 
 
-import fit5171.monash.edu.ChooseTicket;
+
+import main.java.fit5171.monash.edu.ChooseTicket;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
