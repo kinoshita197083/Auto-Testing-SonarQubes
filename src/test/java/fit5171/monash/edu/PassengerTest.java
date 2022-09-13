@@ -1,4 +1,4 @@
-package test;
+package test.java.fit5171.monash.edu;
 import fit5171.monash.edu.Person;
 import org.junit.jupiter.api.*;
 import fit5171.monash.edu.Passenger;
