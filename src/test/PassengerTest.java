@@ -39,9 +39,9 @@ public class PassengerTest {
     @Test
     @DisplayName("A test method to test if email cannot be empty")
     void testEmailValid(){
-        String email = "rwan0085@student.monash.edu";
-        passenger.setEmail(email);
-        Assertions.assertEquals(email, passenger.getEmail());
+        String email = "abc@domain.com”";
+        this.passenger.setEmail(email);
+        Assertions.assertEquals(email, this.passenger.getEmail());
     }
 
     @ParameterizedTest
@@ -53,9 +53,18 @@ public class PassengerTest {
     }
 
     @Test
-    @DisplayName("A test method to test if phone number cannot be empty")
-    void testPhoneValid(){
-        String phone = "6100000";
+    @DisplayName("A test method to test if local phone number cannot be empty")
+    void testLocalPhoneValid(){
+        String phone = "0400000000";
+        passenger.setPhoneNumber(phone);
+        Assertions.assertEquals(phone, passenger.getPhoneNumber());
+    }
+
+    @Test
+    @DisplayName("A test method to test if international phone number cannot be empty")
+    void testInternationalPhoneValid(){
+        Passenger passenger = new Passenger();
+        String phone = "+61400000000";
         passenger.setPhoneNumber(phone);
         Assertions.assertEquals(phone, passenger.getPhoneNumber());
     }
@@ -113,5 +122,29 @@ public class PassengerTest {
     void testPassportInvalid(String passport){
         passenger.setPassport(passport);
         assertTrue(Strings.isNullOrEmpty(passport));
+    }
+
+    @Test
+    @DisplayName("Test if passport pattern valid")
+    void testPassportPatternInvalid(){
+        String passport = "1234567890";
+        boolean successful = passenger.validatePassport(passport);
+        Assertions.assertFalse(successful, "Invalid input");
+    }
+
+    @Test
+    @DisplayName("Test if email pattern valid")
+    void testEmailPatternInvalid(){
+        String email = "1234567890";
+        boolean successful = passenger.validateEmail(email);
+        Assertions.assertFalse(successful, "Invalid input");
+    }
+
+    @Test
+    @DisplayName("Test if phone number pattern valid")
+    void testPhoneNumberPatternInvalid(){
+        String phoneNumber = "1234567890";
+        boolean successful = passenger.validatePhoneNumber(phoneNumber);
+        Assertions.assertFalse(successful, "Invalid input");
     }
 }

@@ -1,5 +1,7 @@
 package fit5171.monash.edu;
 
+import java.util.regex.PatternSyntaxException;
+
 public class Passenger extends Person
 {
     private String email;
@@ -17,8 +19,10 @@ public class Passenger extends Person
         this.cardNumber=cardNumber;
         if (validatePassport(passport))
             this.passport=passport;
-        this.email=email;
-        this.phoneNumber=phoneNumber;
+        if (validateEmail(email))
+            this.email=email;
+        if (validatePhoneNumber(phoneNumber))
+            this.phoneNumber=phoneNumber;
     }
 
     public String getEmail() {
@@ -26,7 +30,13 @@ public class Passenger extends Person
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        try{
+            if (!validateEmail(email))
+                this.email = email;
+        }
+        catch (Throwable e) {
+            System.out.println("Email pattern invalid");
+        }
     }
 
     public String getFirstName() {
@@ -84,7 +94,7 @@ public class Passenger extends Person
                 this.passport = passport;
         }
         catch (Throwable e) {
-            System.out.println("Field cannot be empty");
+            System.out.println("Passport pattern invalid");
         }
     }
 
@@ -94,7 +104,13 @@ public class Passenger extends Person
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        try{
+            if (validatePhoneNumber(phoneNumber))
+                this.phoneNumber = phoneNumber;
+        }
+        catch (Throwable e) {
+            System.out.println("Phone number pattern invalid");
+        }
     }
 
     @Override
@@ -114,6 +130,23 @@ public class Passenger extends Person
 
     public boolean validatePassport(String passport){
         if (passport.length()<10)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean validateEmail(String email) {
+        if (email.matches("^(.+)@(\\\\S+)$"))
+            return true;
+        else
+            return false;
+    }
+
+    public boolean validatePhoneNumber(String phoneNumber){
+        if (phoneNumber.length()==10 && phoneNumber.charAt(0) == '0' && phoneNumber.charAt(1) == '4') {
+            return true;
+        }
+        if (phoneNumber.length() == 12 && phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '6' && phoneNumber.charAt(2) == '1' && phoneNumber.charAt(3) == '4')
             return true;
         else
             return false;
