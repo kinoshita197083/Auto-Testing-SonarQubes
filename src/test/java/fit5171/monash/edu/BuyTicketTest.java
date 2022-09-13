@@ -66,4 +66,20 @@ public class BuyTicketTest {
         // Assert null because an invalid email cannot create a passenger success
         assertNull(ticket99.getPassenger());
     }
+
+    @Test
+    @ParameterizedTest
+    @ValueSource(strings= {"@test.com"})
+    void testBuyTicketEnterInvalidEmail(String input) {
+
+        ticket99 = new Ticket(123, 700, flight, false, null);
+
+        try {
+            buyTicket.buyTicket(123);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        // Assert null because an invalid email cannot create a passenger success
+        assertNull(ticket99.getPassenger());
+    }
 }
