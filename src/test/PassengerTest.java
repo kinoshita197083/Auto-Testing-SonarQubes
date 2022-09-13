@@ -12,6 +12,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.testng.util.Strings;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @DisplayName("Passenger test class")
 public class PassengerTest {
@@ -25,16 +27,19 @@ public class PassengerTest {
 
     @BeforeEach
     void init(){
-        person = mock(Person.class);
+        this.person = mock(Person.class);
+//        doCallRealMethod().when(person).setFirstName(anyString());
+//        this.person.setFirstName("Chen");
+//        when(passenger.getFirstName()).thenReturn("Chen");
         this.passenger = new Passenger() {};
     }
 
-    @Test
-    @DisplayName("A test method to test if person class attritube valid")
-    void testFirstName(){
-        String firstName = "Tim";
-//        when(person.setFirstName(firstName)).thenReturn(new Person());
-    }
+//    @Test
+//    @DisplayName("A test method to test if person class attritube valid")
+//    void testFirstName(){
+//        String firstName = "Tim";
+////        when(person.setFirstName(firstName)).thenReturn(new Person());
+//    }
 
     @Test
     @DisplayName("A test method to test if email cannot be empty")
@@ -113,5 +118,33 @@ public class PassengerTest {
     void testPassportInvalid(String passport){
         passenger.setPassport(passport);
         assertTrue(Strings.isNullOrEmpty(passport));
+    }
+
+    @Test
+    @DisplayName("Test if the first name is matched to user inputs")
+    void testIfFirstNameFieldsMatchUserInputs(){
+        Passenger mockedPassenger = new Passenger("Lee", "secondName", 20, "Male", "test@email.com", "", "", "", 0);
+        assertTrue(mockedPassenger.getFirstName().equals("Lee") );
+    }
+
+    @Test
+    @DisplayName("Test if the second name is matched to user inputs")
+    void testIfSecondNameFieldsMatchUserInputs(){
+        Passenger mockedPassenger = new Passenger("Lee", "Apple", 20, "Male", "test@email.com", "", "", "", 0);
+        assertTrue(mockedPassenger.getSecondName().equals("Apple") );
+    }
+
+    @Test
+    @DisplayName("Test if the age is matched to user inputs")
+    void testIfAgeFieldsMatchUserInputs(){
+        Passenger mockedPassenger = new Passenger("Lee", "secondName", 20, "Male", "test@email.com", "", "", "", 0);
+        assertTrue(mockedPassenger.getAge() == 20);
+    }
+
+    @Test
+    @DisplayName("Test if the gender is matched to user inputs")
+    void testIfGenderFieldsMatchUserInputs(){
+        Passenger mockedPassenger = new Passenger("Lee", "secondName", 20, "Male", "test@email.com", "", "", "", 0);
+        assertTrue(mockedPassenger.getGender().equals("Male") );
     }
 }
