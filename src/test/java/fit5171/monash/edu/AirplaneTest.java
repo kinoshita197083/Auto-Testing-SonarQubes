@@ -1,5 +1,6 @@
-package fit5171.monash.edu;
+package test.java.fit5171.monash.edu;
 
+import main.java.fit5171.monash.edu.Airplane;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
