@@ -11,6 +11,15 @@ public class TicketCollection {
 	}
 
 	public static void addTickets(ArrayList<Ticket> tickets_db) {
+		//check each ticket
+//		for (Ticket t:tickets) {
+//			if () {
+//
+//			} else {
+//
+//			}
+//
+//		}
 		TicketCollection.tickets.addAll(tickets_db);
 	}
 	
