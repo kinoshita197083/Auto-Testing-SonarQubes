@@ -11,6 +11,7 @@ import org.mockito.MockedStatic;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -47,17 +48,46 @@ public class TicketCollectionTest {
         TicketCollection.addTickets(tickets);
     }
 
-    @DisplayName("Add Invalid Ticket into db")
+    @DisplayName("Add invalid Ticket into db")
     @Test
-    void invalidateTicketIntoTicketCollection() {
+    void invalidTicketAddedIntoTicketCollection() {
         //Initiate a test ticket array
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+
+        //Add an invalid ticket into the input ArrayList
         tickets.add(null);
 
-        Throwable exception = assertThrows(java.lang.NullPointerException.class, () -> {
+        try {
             TicketCollection.addTickets(tickets);
-        });
-
-        assertEquals(NullPointerException.class, exception.getMessage());
+        } catch (Exception e) {
+            assertTrue(e.getMessage().contains("Invalid"));
+        }
     }
+
+    @DisplayName("Test with valid ticket_id and return valid ticket info")
+    @Test
+    void validTicketIdReturnValidTicketInfo() {
+
+        MockedStatic<TicketCollection> mockedTicketCollection = mockStatic(TicketCollection.class, CALLS_REAL_METHODS);
+        mockedTicketCollection.when(() -> TicketCollection.getTicketInfo(anyInt())).thenReturn(ticket1);
+
+        try {
+            Ticket testTicket = TicketCollection.getTicketInfo(ticket1.getTicket_id());
+            assertTrue(testTicket != null);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @DisplayName("Test with invalid ticket_id and throw exception")
+    @Test
+    void invalidTicketIdReturnValidTicketInfo() {
+
+        try {
+            Ticket testTicket = TicketCollection.getTicketInfo(0);
+        } catch(Exception e) {
+            assertTrue(e.getMessage().contains("does not exit"));
+        }
+    }
+
 }
