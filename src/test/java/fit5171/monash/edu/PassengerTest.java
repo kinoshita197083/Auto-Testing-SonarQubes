@@ -31,13 +31,6 @@ public class PassengerTest {
     }
 
     @Test
-    @DisplayName("A test method to test if person class attritube valid")
-    void testFirstName(){
-        String firstName = "Tim";
-//        when(person.setFirstName(firstName)).thenReturn(new Person());
-    }
-
-    @Test
     @DisplayName("A test method to test if email cannot be empty")
     void testEmailValid(){
         String email = "abc@domain.com”";
