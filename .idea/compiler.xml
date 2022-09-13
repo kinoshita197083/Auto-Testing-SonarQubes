@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FIT51711" />
         <module name="Assignment2-code-base-adjusted" />
+        <module name="FIT5171Assignment21" />
         <module name="Assignment2-code-base1" />
       </profile>
     </annotationProcessing>

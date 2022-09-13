@@ -1,4 +1,4 @@
-package test;
+package test.java.fit5171.monash.edu;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
