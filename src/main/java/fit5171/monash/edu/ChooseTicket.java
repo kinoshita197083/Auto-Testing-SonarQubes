@@ -18,11 +18,11 @@ public class ChooseTicket{
         Flight flight = new Flight();
 
         //search for direct flight from city1 to city2
-        try {
+        if (city1 != null && city2 != null) {
 			flight = FlightCollection.getFlightInfo(city1, city2);
 		}
-		catch(Exception e) {
-			throw e;
+		else {
+			throw new Exception("Invalid city");
 		}
         
         
