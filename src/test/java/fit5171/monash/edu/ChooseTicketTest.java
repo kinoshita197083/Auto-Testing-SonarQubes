@@ -2,7 +2,7 @@ package test.java.fit5171.monash.edu;
 
 
 
-import main.java.fit5171.monash.edu.ChooseTicket;
+import main.java.fit5171.monash.edu.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -166,15 +166,4 @@ public class ChooseTicketTest {
         assertEquals("OSK Airline", validTicket.getFlight().getCompany());
     }
 
-//    @DisplayName("Choose an already booked ticket")
-//    @Test
-//    void testChoosingAnAlreadyBookedTicket() {
-//        int
-//
-//        Throwable exception = assertThrows(Exception.class, () -> {
-//            chooseTicket.chooseTicket(city1, city2);
-//        });
-//
-//        assertTrue(exception.getMessage().contains("Invalid city"));
-//    }
 }
