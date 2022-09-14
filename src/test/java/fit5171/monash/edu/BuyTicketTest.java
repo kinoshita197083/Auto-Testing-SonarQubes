@@ -1,6 +1,5 @@
-package test.java.fit5171.monash.edu;
+package fit5171.monash.edu;
 
-import main.java.fit5171.monash.edu.*;
 import org.junit.jupiter.api.*;
 import org.mockito.MockedStatic;
 

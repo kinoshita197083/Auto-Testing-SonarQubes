@@ -1,4 +1,4 @@
-package main.java.fit5171.monash.edu;
+package fit5171.monash.edu;
 
 import java.util.ArrayList;
 
@@ -24,6 +24,7 @@ public class TicketCollection {
 	public static void getAllTickets() {
     	//display all available tickets from the Ticket collection
     }
+
 	public static Ticket getTicketInfo(int ticket_id) throws Exception {
     	//SELECT a ticket where ticket id = ticket_id
 		Ticket returnTicket = null;

@@ -1,4 +1,4 @@
-package main.java.fit5171.monash.edu;
+package fit5171.monash.edu;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
