@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.regex.PatternSyntaxException;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -44,13 +43,6 @@ class TicketTest {
         assertEquals(status, ticket.ticketStatus());
     }
 
-//    @Test
-//    void testTicketStatusInNonBoolean() {
-//        Ticket ticket = new Ticket();
-//        String status = "yes";
-//        ticket.setTicketStatus(status);
-//        assertEquals(status, ticket.ticketStatus());
-//    }
     @DisplayName("Test ticket price when adult price as input")
     @Test
     void testDiscountBasedOnAgeCategoryAdult() {

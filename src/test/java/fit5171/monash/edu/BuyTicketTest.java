@@ -11,11 +11,6 @@ import static org.mockito.Mockito.*;
 
 public class BuyTicketTest {
 
-//    private static Airplane airplane = new Airplane(3343, "A330", 8, 72, 6);
-//    private static Flight flight = new Flight(99, "Osaka", "Okinawa", "OK9900", "OSK Airline",
-//            Timestamp.valueOf("2022-09-03 10:10:10.0"), Timestamp.valueOf("2022-09-03 10:10:10.0"), airplane);
-//    private static Passenger passenger = new Passenger("Lee", "Bruce", 35, "Male", "test@email.com", "0400000000", "Q1234567", "asd", 123);
-//    private static Ticket ticket99 = new Ticket(123, 700, flight, false, passenger);
     private BuyTicket buyTicket;
 
     public BuyTicketTest() {}
@@ -28,22 +23,7 @@ public class BuyTicketTest {
     @BeforeEach
     void init() {
         this.buyTicket = new BuyTicket();
-
-//        //mock static class FlightCollection
-//        MockedStatic<FlightCollection> mockedFlight = mockStatic(FlightCollection.class, CALLS_REAL_METHODS);
-//
-//        // mock static method FlightCollection.getFlightInfo
-//        mockedFlight.when(() -> FlightCollection.getFlightInfo(1)).thenReturn(flight);
-//
-//        //mock static method in non-static class Airplane.getAirPlaneInfo()
-//        MockedStatic<Airplane> airplaneMockedStatic = mockStatic(Airplane.class, CALLS_REAL_METHODS);
-//        airplaneMockedStatic.when(() -> Airplane.getAirPlaneInfo(3343)).thenReturn(airplane);
     }
-
-//    @BeforeMethod
-//    public void setUp() throws Exception {
-//        buyTicket = new BuyTicket();
-//    }
 
     @AfterEach
     public void tearDown(){
