@@ -1,6 +1,5 @@
 package main.java.fit5171.monash.edu;
 
-
 public class Person //abstract class Person
 {
     private String firstName;
