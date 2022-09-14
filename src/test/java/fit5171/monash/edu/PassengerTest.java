@@ -31,7 +31,7 @@ public class PassengerTest {
     @Test
     @DisplayName("A test method to test if email cannot be empty")
     void testEmailValid(){
-        String email = "abc@domain.com”";
+        String email = "abc@domain.com";
         this.passenger.setEmail(email);
         Assertions.assertEquals(email, this.passenger.getEmail());
     }
