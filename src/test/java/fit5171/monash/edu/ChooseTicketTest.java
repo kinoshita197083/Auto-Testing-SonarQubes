@@ -11,6 +11,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.MockedStatic;
+import static org.mockito.Mockito.*;
+
+import java.sql.Timestamp;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -112,4 +116,65 @@ public class ChooseTicketTest {
             System.out.println(e);
         }
     }
+    @Test
+    void testChooseTicketWithInvalidFlight() {
+        //A dummy data for testing: no fight for two depart cities
+        Passenger passenger = new Passenger("Lee", "Bruce", 35, "Male", "test@email.com", "0400000000", "Q1234567", "asd", 123);
+        Airplane airplane = new Airplane(3343, "A330", 8, 72, 6);
+        Flight flight = new Flight(99, "Osaka", "Okinawa", "OK9900", "OSK Airline",
+                Timestamp.valueOf("2022-09-03 10:10:10.0"), Timestamp.valueOf("2022-09-03 10:10:10.0"), airplane);
+        Ticket ticket99 = new Ticket(123, 700, flight, false, passenger);
+
+        //Two cities user would enter
+        String city1 = "Sydney";
+        String city2 = "Melbourne";
+
+        //Mock flight collection for returning a dummy ticket_id
+        MockedStatic<FlightCollection> mockedFlightCollection = mockStatic(FlightCollection.class, CALLS_REAL_METHODS);
+        mockedFlightCollection.when(() -> FlightCollection.getFlightInfo(city1, city2)).thenReturn(flight);
+
+        //Null flight should trigger a NullPointerException with specified message
+        try {
+            assertNotNull(FlightCollection.getFlightInfo(city1, city2));
+            System.out.println("No flight found");
+        } catch(Exception e) {
+        }
+    }
+
+    @Test
+    void testChooseTicketWithValidFlight() {
+        //A dummy data for testing: valid fight for two depart cities
+        Passenger passenger = new Passenger("Lee", "Bruce", 35, "Male", "test@email.com", "0400000000", "Q1234567", "asd", 123);
+        Airplane airplane = new Airplane(3343, "A330", 8, 72, 6);
+        Flight flight = new Flight(99, "Osaka", "Okinawa", "OK9900", "OSK Airline",
+                Timestamp.valueOf("2022-09-03 10:10:10.0"), Timestamp.valueOf("2022-09-03 10:10:10.0"), airplane);
+        Ticket validTicket = new Ticket(999, 700, flight, false, passenger);
+
+        //Two cities user would enter
+        String city1 = "Osaka";
+        String city2 = "Okinawa";
+
+        //Mock flight collection for returning a dummy ticket_id
+        MockedStatic<FlightCollection> mockedFlightCollection = mockStatic(FlightCollection.class, CALLS_REAL_METHODS);
+        mockedFlightCollection.when(() -> FlightCollection.getFlightInfo(city1, city2)).thenReturn(flight);
+
+        //Valid flight info should be found
+        assertEquals(99, validTicket.getFlight().getFlightID());
+        assertEquals("Okinawa", validTicket.getFlight().getDepartFrom());
+        assertEquals("Osaka", validTicket.getFlight().getDepartTo());
+        assertEquals("OK9900", validTicket.getFlight().getCode());
+        assertEquals("OSK Airline", validTicket.getFlight().getCompany());
+    }
+
+//    @DisplayName("Choose an already booked ticket")
+//    @Test
+//    void testChoosingAnAlreadyBookedTicket() {
+//        int
+//
+//        Throwable exception = assertThrows(Exception.class, () -> {
+//            chooseTicket.chooseTicket(city1, city2);
+//        });
+//
+//        assertTrue(exception.getMessage().contains("Invalid city"));
+//    }
 }
