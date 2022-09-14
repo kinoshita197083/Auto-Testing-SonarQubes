@@ -8,12 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FIT51711" />
         <module name="Assignment2-code-base-adjusted" />
-        <module name="FIT5171Assignment21" />
+        <module name="FIT5171Assignment2" />
         <module name="Assignment2-code-base1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Assignment2-code-base" target="18" />
+      <module name="FIT5171Assignment21" target="18" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,8 +1,5 @@
-package test.java.fit5171.monash.edu;
+package fit5171.monash.edu;
 
-
-import main.java.fit5171.monash.edu.*;
-import main.java.fit5171.monash.edu.TicketCollection;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +8,7 @@ import org.mockito.MockedStatic;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -33,6 +31,7 @@ public class TicketCollectionTest {
 
     @BeforeEach
     void init(){
+//        MockedStatic<Airplane> airplaneMockedStatic = mockStatic(Airplane.class, CALLS_REAL_METHODS);
         Ticket mockedTicket = mock(Ticket.class);
     }
 

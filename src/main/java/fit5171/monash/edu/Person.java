@@ -1,4 +1,5 @@
-package main.java.fit5171.monash.edu;
+package fit5171.monash.edu;
+
 
 public class Person //abstract class Person
 {

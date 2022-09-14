@@ -1,4 +1,4 @@
-package main.java.fit5171.monash.edu;
+package fit5171.monash.edu;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,13 +18,8 @@ public class ChooseTicket{
         Flight flight = new Flight();
 
         //search for direct flight from city1 to city2
-        if (city1 != null && city2 != null && validateCity(city1) && validateCity(city2)) {
-			try {
-				flight = FlightCollection.getFlightInfo(city1, city2);
-			}
-			catch (NullPointerException e) {
-				System.out.println("No flight found");
-			}
+        if (city1 != null && city2 != null) {
+			flight = FlightCollection.getFlightInfo(city1, city2);
 		}
 		else {
 			throw new Exception("Invalid city");
@@ -34,31 +29,15 @@ public class ChooseTicket{
         if(flight != null) {
         	
         	TicketCollection.getAllTickets();
-
-			//Check how many valid tickets are inside the db
-			int ticket_count = TicketCollection.tickets.size();
        
 	        System.out.println("\nEnter ID of ticket you want to choose:");
 	        
 	        int ticket_id = in.nextInt();
-			int validated_ticket_id = 0;
 	        
-	        //validate ticket here
-			if (validateTicket(ticket_id, ticket_count)){
-				validated_ticket_id = ticket_id;
-			} else {
-				throw new Exception("Enter a valid ticket option");
-			}
-
-			//Whileloop Version
-//			while (validateTicket(ticket_id, ticket_count)){
-//				System.out.println("Please choose from the following tickets");
-//				TicketCollection.getAllTickets();
-//				ticket_id = in.nextInt();
-//			}
+	        //validate ticker here
 	        
 	        //buy ticket here
-			buyTicket.buyTicket(validated_ticket_id);
+	        buyTicket.buyTicket(ticket_id);
         }
         else
             //in case there is no direct ticket from city1 to city2
@@ -98,13 +77,5 @@ public class ChooseTicket{
         }
 
     }
-
-	public Boolean validateCity(String city) {
-		return city.matches("^[a-zA-Z]*$");
-	}
-
-	public Boolean validateTicket(int selected_input, int ticket_count) {
-		return selected_input <= ticket_count;
-	}
 	
 }

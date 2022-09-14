@@ -1,8 +1,8 @@
-package main.java.fit5171.monash.edu;
+package fit5171.monash.edu;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
-import main.java.fit5171.monash.edu.Airplane;
+import java.util.regex.PatternSyntaxException;
 
 public class Flight {
     private int flightID;
@@ -18,7 +18,7 @@ public class Flight {
 
     public Flight(int flight_id, String departTo, String departFrom, String code, String company, Timestamp dateFrom,Timestamp dateTo, Airplane airplane)
     {
-            this.flightID=flight_id;
+            this.flightID = flight_id;
             this.departTo = departTo;
             this.departFrom = departFrom;
             this.code = code;

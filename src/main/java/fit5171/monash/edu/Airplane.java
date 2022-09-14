@@ -1,4 +1,4 @@
-package main.java.fit5171.monash.edu;
+package fit5171.monash.edu;
 
 import java.util.regex.PatternSyntaxException;
 
@@ -54,7 +54,7 @@ public class Airplane
 
     public void setBusinessSitsNumber(int businessSitsNumber) {
         if (validateSitsNumber(businessSitsNumber))
-            this.businessSitsNumber =businessSitsNumber;
+            this.businessSitsNumber = businessSitsNumber;
         else if (businessSitsNumber == 0)
             throw new PatternSyntaxException("Seats number cannot be empty!", "", -1);
         else
@@ -103,8 +103,8 @@ public class Airplane
     }
 
     public boolean validateSitsNumber(int sitsNumber) {
-        int bot = 1;
-        int top = 300;
+        int bot = 0;
+        int top = 301;
         return sitsNumber > bot && sitsNumber < top;
     }
 }
