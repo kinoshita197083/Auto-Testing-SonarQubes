@@ -1,26 +1,24 @@
 package fit5171.monash.edu;
 
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 0483aed4a4fe251d9cbdf7d7906e3185e6a17901
 import main.java.fit5171.monash.edu.*;
 >>>>>>> a3cab2e31aacc8612f603a2964c28b5bed0dafda
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.junit.jupiter.params.provider.NullSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import static org.mockito.Mockito.*;
 
 import java.sql.Timestamp;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
