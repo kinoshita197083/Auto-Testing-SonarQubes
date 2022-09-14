@@ -31,26 +31,52 @@ public class ChooseTicketTest {
         this.chooseTicket = new ChooseTicket(){};
     }
 
-//    @DisplayName("Input cities are valid value")
-//    @Test
-//    void testCityWithValidValue() {
-//
-//        Throwable exception = assertThrows(Exception.class, () -> {
-//            chooseTicket.chooseTicket("Tokyo", "Sydney");
-//        });
-//        assertEquals(Exception.class, exception.getMessage());
-//    }
-
-    @DisplayName("Input city are invalid values")
-    @ParameterizedTest
-    @NullSource
+    @DisplayName("Input city are nulls")
     @Test
-    void testCityWithInValidValues(String city1, String city2) {
+    void testChooseTicketWithNullInputAsCityName() {
+
+        Throwable exception = assertThrows(Exception.class, () -> {
+            chooseTicket.chooseTicket(null, null);
+        });
+
+        assertTrue(exception.getMessage().contains("Invalid city"));
+    }
+
+    @DisplayName("Input city are valid values")
+    @Test
+    void testChooseTicketWithValidValues() {
+        String city1 = "Tokyo";
+        String city2 = "Taipei";
 
         Throwable exception = assertThrows(Exception.class, () -> {
             chooseTicket.chooseTicket(city1, city2);
         });
 
-        assertEquals(exception.getMessage(), exception.getMessage());
+        assertFalse(exception.getMessage().contains("Invalid city"));
     }
+
+    @DisplayName("Input city are invalid values")
+    @Test
+    void testChooseTicketWithInValidValues() {
+        String city1 = "123";
+        String city2 = "Taipei";
+
+        Throwable exception = assertThrows(Exception.class, () -> {
+            chooseTicket.chooseTicket(city1, city2);
+        });
+
+        assertTrue(exception.getMessage().contains("Invalid city"));
+    }
+
+//    @DisplayName("Choose an already booked ticket")
+//    @Test
+//    void testChoosingAnAlreadyBookedTicket() {
+//        int
+//
+//        Throwable exception = assertThrows(Exception.class, () -> {
+//            chooseTicket.chooseTicket(city1, city2);
+//        });
+//
+//        assertTrue(exception.getMessage().contains("Invalid city"));
+//    }
 }
