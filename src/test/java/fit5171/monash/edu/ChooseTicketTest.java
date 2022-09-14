@@ -75,7 +75,7 @@ public class ChooseTicketTest {
     }
 
     @Test
-    void testBuyTicketWithInvalidFlight() {
+    void testChooseTicketWithInvalidFlight() {
         //A dummy data for testing: no fight for two depart cities
         Passenger passenger = new Passenger("Lee", "Bruce", 35, "Male", "test@email.com", "0400000000", "Q1234567", "asd", 123);
         Airplane airplane = new Airplane(3343, "A330", 8, 72, 6);
@@ -87,21 +87,20 @@ public class ChooseTicketTest {
         String city1 = "Sydney";
         String city2 = "Melbourne";
 
-        //Mock ticket collection for returning a dummy ticket_id
+        //Mock flight collection for returning a dummy ticket_id
         MockedStatic<FlightCollection> mockedFlightCollection = mockStatic(FlightCollection.class, CALLS_REAL_METHODS);
         mockedFlightCollection.when(() -> FlightCollection.getFlightInfo(city1, city2)).thenReturn(flight);
 
         //Null flight should trigger a NullPointerException with specified message
         try {
-            chooseTicket.chooseTicket(city1, city2);
+            assertNotNull(FlightCollection.getFlightInfo(city1, city2));
+            System.out.println("No flight found");
         } catch(Exception e) {
-            System.out.println(e);
-            assertTrue(e.getMessage().contains("No"));
         }
     }
 
     @Test
-    void testBuyTicketWithValidFlight() {
+    void testChooseTicketWithValidFlight() {
         //A dummy data for testing: valid fight for two depart cities
         Passenger passenger = new Passenger("Lee", "Bruce", 35, "Male", "test@email.com", "0400000000", "Q1234567", "asd", 123);
         Airplane airplane = new Airplane(3343, "A330", 8, 72, 6);
@@ -113,16 +112,9 @@ public class ChooseTicketTest {
         String city1 = "Osaka";
         String city2 = "Okinawa";
 
-        //Mock ticket collection for returning a dummy ticket_id
+        //Mock flight collection for returning a dummy ticket_id
         MockedStatic<FlightCollection> mockedFlightCollection = mockStatic(FlightCollection.class, CALLS_REAL_METHODS);
         mockedFlightCollection.when(() -> FlightCollection.getFlightInfo(city1, city2)).thenReturn(flight);
-
-        try {
-            chooseTicket.chooseTicket(city1, city2);
-        } catch(Exception e) {
-            System.out.println(e);
-            assertTrue(e.getMessage().contains("No"));
-        }
 
         //Valid flight info should be found
         assertEquals(99, validTicket.getFlight().getFlightID());

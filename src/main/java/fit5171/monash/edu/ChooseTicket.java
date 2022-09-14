@@ -19,7 +19,12 @@ public class ChooseTicket{
 
         //search for direct flight from city1 to city2
         if (city1 != null && city2 != null && validateCity(city1) && validateCity(city2)) {
-			flight = FlightCollection.getFlightInfo(city1, city2);
+			try {
+				flight = FlightCollection.getFlightInfo(city1, city2);
+			}
+			catch (NullPointerException e) {
+				System.out.println("No flight found");
+			}
 		}
 		else {
 			throw new Exception("Invalid city");
