@@ -23,9 +23,6 @@ public class TicketCollection {
 	
 	public static void getAllTickets() {
     	//display all available tickets from the Ticket collection
-		for (int i = 0; i < tickets.size(); i++ ) {
-			System.out.println(i + ": " + tickets.get(i));
-		}
     }
 
 	public static Ticket getTicketInfo(int ticket_id) throws Exception {
@@ -35,6 +32,7 @@ public class TicketCollection {
 		for(Ticket t : tickets) {
 			if (t.getTicket_id() == ticket_id) {
 				returnTicket = t;
+				return t;
 			} else {
 				throw new Exception("The ticket does not exist");
 			}

@@ -8,6 +8,7 @@ import org.mockito.MockedStatic;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -30,6 +31,7 @@ public class TicketCollectionTest {
 
     @BeforeEach
     void init(){
+//        MockedStatic<Airplane> airplaneMockedStatic = mockStatic(Airplane.class, CALLS_REAL_METHODS);
         Ticket mockedTicket = mock(Ticket.class);
     }
 
