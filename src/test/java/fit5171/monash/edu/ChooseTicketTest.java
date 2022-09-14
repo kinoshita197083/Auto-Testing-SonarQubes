@@ -12,8 +12,14 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ChooseTicketTest {
 
@@ -68,15 +74,42 @@ public class ChooseTicketTest {
         assertTrue(exception.getMessage().contains("Invalid city"));
     }
 
-//    @DisplayName("Choose an already booked ticket")
-//    @Test
-//    void testChoosingAnAlreadyBookedTicket() {
-//        int
-//
-//        Throwable exception = assertThrows(Exception.class, () -> {
-//            chooseTicket.chooseTicket(city1, city2);
-//        });
-//
-//        assertTrue(exception.getMessage().contains("Invalid city"));
-//    }
+    @DisplayName("Choose an already booked ticket")
+    @Test
+    void testChoosingAnAlreadyBookedTicket() {
+        String city1 = "Tokyo";
+        String city2 = "Taipei";
+        int input = 1;
+
+        try {
+            Throwable exception = assertThrows(Exception.class, () -> {
+                chooseTicket.chooseTicket(city1, city2);
+                IntegerAsker asker = mock(IntegerAsker.class);
+                when(asker.ask(anyString())).thenReturn(input);
+            });
+
+            assertFalse(exception.getMessage().contains("Enter a valid"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @DisplayName("Choose a not booked ticket")
+    @Test
+    void testChoosingAnNotBookedTicket() {
+        String city1 = "Tokyo";
+        String city2 = "Taipei";
+        String userInput = "99";
+
+        try {
+            Throwable exception = assertThrows(Exception.class, () -> {
+                InputStream input = new ByteArrayInputStream(userInput.getBytes());
+                System.setIn(input);
+                chooseTicket.chooseTicket(city1, city2);
+            });
+            assertTrue(exception.getMessage().contains("Enter"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
