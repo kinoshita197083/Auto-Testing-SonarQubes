@@ -1,7 +1,5 @@
 package fit5171.monash.edu;
 
-import java.util.regex.PatternSyntaxException;
-
 public class Passenger extends Person
 {
     private String email;

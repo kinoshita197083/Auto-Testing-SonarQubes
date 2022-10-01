@@ -2,16 +2,12 @@ package fit5171.monash.edu;
 
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.testng.util.Strings;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 @DisplayName("Passenger test class")
 public class PassengerTest {

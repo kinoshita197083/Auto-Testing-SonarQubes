@@ -10,11 +10,6 @@ import static org.mockito.Mockito.*;
 
 public class BuyTicketTest {
 
-//    private static Airplane airplane = new Airplane(3343, "A330", 8, 72, 6);
-//    private static Flight flight = new Flight(99, "Osaka", "Okinawa", "OK9900", "OSK Airline",
-//            Timestamp.valueOf("2022-09-03 10:10:10.0"), Timestamp.valueOf("2022-09-03 10:10:10.0"), airplane);
-//    private static Passenger passenger = new Passenger("Lee", "Bruce", 35, "Male", "test@email.com", "0400000000", "Q1234567", "asd", 123);
-//    private static Ticket ticket99 = new Ticket(123, 700, flight, false, passenger);
     private BuyTicket buyTicket;
 
     public BuyTicketTest() {}
@@ -27,22 +22,7 @@ public class BuyTicketTest {
     @BeforeEach
     void init() {
         this.buyTicket = new BuyTicket();
-
-//        //mock static class FlightCollection
-//        MockedStatic<FlightCollection> mockedFlight = mockStatic(FlightCollection.class, CALLS_REAL_METHODS);
-//
-//        // mock static method FlightCollection.getFlightInfo
-//        mockedFlight.when(() -> FlightCollection.getFlightInfo(1)).thenReturn(flight);
-//
-//        //mock static method in non-static class Airplane.getAirPlaneInfo()
-//        MockedStatic<Airplane> airplaneMockedStatic = mockStatic(Airplane.class, CALLS_REAL_METHODS);
-//        airplaneMockedStatic.when(() -> Airplane.getAirPlaneInfo(3343)).thenReturn(airplane);
     }
-
-//    @BeforeMethod
-//    public void setUp() throws Exception {
-//        buyTicket = new BuyTicket();
-//    }
 
     @AfterEach
     public void tearDown(){
@@ -77,6 +57,8 @@ public class BuyTicketTest {
         //Valid ticket info should be display
         assertEquals(123, ticket99.getTicket_id());
         assertEquals(700, ticket99.getPrice());
+
+        mockedTicketCollection.close();
     }
 
     @Test
@@ -100,6 +82,8 @@ public class BuyTicketTest {
             System.out.println(e);
             assertTrue(e.getMessage().contains("No"));
         }
+
+        mockedTicketCollection.close();
     }
 
     @Test
@@ -121,6 +105,8 @@ public class BuyTicketTest {
         assertEquals("Osaka", validTicket.getFlight().getDepartTo());
         assertEquals("OK9900", validTicket.getFlight().getCode());
         assertEquals("OSK Airline", validTicket.getFlight().getCompany());
+
+        mockedTicketCollection.close();
     }
 
     @Test
@@ -137,6 +123,8 @@ public class BuyTicketTest {
 
         //Passenger info should be null
         assertNull(invalidTicket.getPassenger());
+
+        mockedTicketCollection.close();
     }
 
     @Test
@@ -159,6 +147,9 @@ public class BuyTicketTest {
         assertEquals("Q1234567", validTicket.getPassenger().getPassport());
         assertEquals("0400000000", validTicket.getPassenger().getPhoneNumber());
         assertEquals("Male", validTicket.getPassenger().getGender());
+
+        mockedTicketCollection.close();
+
     }
 
     @Test
@@ -182,5 +173,8 @@ public class BuyTicketTest {
 
         //display valid bill to customer
         assertEquals(700, ticket99.getPrice());
+
+        mockedTicketCollection.close();
     }
+
 }

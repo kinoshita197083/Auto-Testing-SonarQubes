@@ -20,10 +20,13 @@ public class TicketCollection {
 		}
 		TicketCollection.tickets.addAll(tickets_db);
 	}
-	
+
 	public static void getAllTickets() {
-    	//display all available tickets from the Ticket collection
-    }
+		//display all available tickets from the Ticket collection
+		for (int i = 0; i < tickets.size(); i++ ) {
+			System.out.println(i + ": " + tickets.get(i));
+		}
+	}
 
 	public static Ticket getTicketInfo(int ticket_id) throws Exception {
     	//SELECT a ticket where ticket id = ticket_id
