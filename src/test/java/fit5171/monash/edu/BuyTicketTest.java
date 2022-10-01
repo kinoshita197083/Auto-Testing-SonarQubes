@@ -57,6 +57,8 @@ public class BuyTicketTest {
         //Valid ticket info should be display
         assertEquals(123, ticket99.getTicket_id());
         assertEquals(700, ticket99.getPrice());
+
+        mockedTicketCollection.close();
     }
 
     @Test
@@ -80,6 +82,8 @@ public class BuyTicketTest {
             System.out.println(e);
             assertTrue(e.getMessage().contains("No"));
         }
+
+        mockedTicketCollection.close();
     }
 
     @Test
@@ -101,6 +105,8 @@ public class BuyTicketTest {
         assertEquals("Osaka", validTicket.getFlight().getDepartTo());
         assertEquals("OK9900", validTicket.getFlight().getCode());
         assertEquals("OSK Airline", validTicket.getFlight().getCompany());
+
+        mockedTicketCollection.close();
     }
 
     @Test
@@ -117,6 +123,8 @@ public class BuyTicketTest {
 
         //Passenger info should be null
         assertNull(invalidTicket.getPassenger());
+
+        mockedTicketCollection.close();
     }
 
     @Test
@@ -139,6 +147,9 @@ public class BuyTicketTest {
         assertEquals("Q1234567", validTicket.getPassenger().getPassport());
         assertEquals("0400000000", validTicket.getPassenger().getPhoneNumber());
         assertEquals("Male", validTicket.getPassenger().getGender());
+
+        mockedTicketCollection.close();
+
     }
 
     @Test
@@ -162,5 +173,8 @@ public class BuyTicketTest {
 
         //display valid bill to customer
         assertEquals(700, ticket99.getPrice());
+
+        mockedTicketCollection.close();
     }
+
 }

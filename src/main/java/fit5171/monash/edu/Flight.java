@@ -1,8 +1,6 @@
 package fit5171.monash.edu;
 
 import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.regex.PatternSyntaxException;
 
 public class Flight {
     private int flightID;

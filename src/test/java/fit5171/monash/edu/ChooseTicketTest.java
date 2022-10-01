@@ -1,30 +1,19 @@
 package fit5171.monash.edu;
 
-<<<<<<< HEAD
-
-
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 0483aed4a4fe251d9cbdf7d7906e3185e6a17901
-import main.java.fit5171.monash.edu.*;
->>>>>>> a3cab2e31aacc8612f603a2964c28b5bed0dafda
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import static org.mockito.Mockito.*;
-
-import java.sql.Timestamp;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.sql.Timestamp;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.CALLS_REAL_METHODS;
 
 public class ChooseTicketTest {
 
@@ -140,6 +129,8 @@ public class ChooseTicketTest {
             System.out.println("No flight found");
         } catch(Exception e) {
         }
+
+        mockedFlightCollection.close();
     }
 
     @Test
@@ -165,6 +156,8 @@ public class ChooseTicketTest {
         assertEquals("Osaka", validTicket.getFlight().getDepartTo());
         assertEquals("OK9900", validTicket.getFlight().getCode());
         assertEquals("OSK Airline", validTicket.getFlight().getCompany());
+
+        mockedFlightCollection.close();
     }
 
 }

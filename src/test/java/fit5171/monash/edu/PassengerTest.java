@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 package fit5171.monash.edu;
 
-=======
-package test.java.fit5171.monash.edu;
-
-import main.java.fit5171.monash.edu.Person;
->>>>>>> 0483aed4a4fe251d9cbdf7d7906e3185e6a17901
 import org.junit.jupiter.api.*;
-
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -35,7 +28,7 @@ public class PassengerTest {
     @Test
     @DisplayName("A test method to test if email cannot be empty")
     void testEmailValid(){
-        String email = "abc@domain.com”";
+        String email = "abc@domain.com";
         this.passenger.setEmail(email);
         Assertions.assertEquals(email, this.passenger.getEmail());
     }
